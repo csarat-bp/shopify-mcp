@@ -58,6 +58,11 @@ const getProducts = {
                 description
                 handle
                 status
+                vendor
+                productType
+                category {
+                  fullName
+                }
                 createdAt
                 updatedAt
                 totalInventory
@@ -143,6 +148,9 @@ const getProducts = {
           description: product.description,
           handle: product.handle,
           status: product.status,
+          vendor: product.vendor,
+          productType: product.productType,
+          category: product.category?.fullName ?? null,
           createdAt: product.createdAt,
           updatedAt: product.updatedAt,
           totalInventory: product.totalInventory,
