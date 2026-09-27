@@ -13,7 +13,7 @@ const VariantSchema = z.object({
   id: z.string().optional().describe("Variant GID for updates. Omit to create new."),
   price: z.string().optional().describe("Price as string, e.g. '49.00'"),
   compareAtPrice: z.string().optional().describe("Compare-at price for showing discounts, e.g. '79.00'"),
-  sku: z.string().optional().describe("SKU for the variant (mapped to inventoryItem.sku)"),
+  sku: z.string().optional().describe("SKU for the variant (mapped to inventoryItem.sku). On update, \"\" clears it."),
   tracked: z.boolean().optional().describe("Whether inventory is tracked. Set false for print-on-demand."),
   taxable: z.boolean().optional().describe("Whether the variant is taxable"),
   barcode: z.string().optional(),
@@ -178,7 +178,7 @@ const manageProductVariants = {
           if (v.barcode) variant.barcode = v.barcode;
           if (v.taxable !== undefined) variant.taxable = v.taxable;
           const inventoryItem: Record<string, any> = {};
-          if (v.sku) inventoryItem.sku = v.sku;
+          if (v.sku !== undefined) inventoryItem.sku = v.sku; // "" clears the SKU
           if (v.tracked !== undefined) inventoryItem.tracked = v.tracked;
           if (v.weight !== undefined) {
             inventoryItem.measurement = { weight: { value: v.weight, unit: v.weightUnit || 'GRAMS' } };
