@@ -53,6 +53,7 @@ import { getOrderTransactions } from "./getOrderTransactions.js";
 import { getFulfillmentOrders } from "./getFulfillmentOrders.js";
 import { getOrderRefundDetails } from "./getOrderRefundDetails.js";
 import { getCollectionById } from "./getCollectionById.js";
+import { createCollection } from "./createCollection.js";
 
 // Inventory & pricing read tools
 import { getInventoryLevels } from "./getInventoryLevels.js";
@@ -108,6 +109,7 @@ export const tools: ShopifyTool[] = [
   getFulfillmentOrders,
   getOrderRefundDetails,
   getCollectionById,
+  createCollection,
   // Inventory & pricing reads (4)
   getInventoryLevels,
   getInventoryItems,
